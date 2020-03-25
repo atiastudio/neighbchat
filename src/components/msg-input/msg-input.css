@@ -1,0 +1,25 @@
+.msg-form {
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+}
+
+.msg-input {
+  outline-style: initial;
+  outline-color: initial;
+  outline-width: 0px;
+  resize: none;
+
+  max-height: 20vh;
+  /* width: 70%; */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.msg-input:focus {
+  box-shadow: none;
+}
+
+.msg-send:hover {
+  color: #3a99fc !important;
+  cursor: pointer;
+}

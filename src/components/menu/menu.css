@@ -1,0 +1,19 @@
+.nav-tabs--vertical {
+  border-bottom: none;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.active {
+  z-index: 100;
+
+  border-bottom-color: #ddd !important;
+  border-right: 0px #fff !important;
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0 !important;
+  margin-right: -1px;
+
+  /* box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 0 0 0,
+    0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12); */
+}
