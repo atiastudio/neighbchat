@@ -2,11 +2,11 @@ import Axios from 'axios';
 import openSocket from 'socket.io-client';
 
 export default class ChapiService {
-  // _apiBase = 'https://neibchat-api.herokuapp.com/api/v1/';
-  _apiBase = 'http://localhost:8000/api/v1/';
+  _apiBase = 'https://neibchat-api.herokuapp.com/api/v1/';
+  // _apiBase = 'http://localhost:8000/api/v1/';
 
-  // socket = openSocket('https://neibchat-api.herokuapp.com');
-  socket = openSocket('http://localhost:8000');
+  socket = openSocket('https://neibchat-api.herokuapp.com');
+  // socket = openSocket('http://localhost:8000');
 
   // ------------- USER REQUEST -------------
   userRequest = async (endpoint, body, token) => {

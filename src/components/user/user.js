@@ -49,8 +49,8 @@ class User extends React.Component {
             </div>
             <div className="d-none d-md-block col-md-3">
               <img
-                // src={`https://neibchat-api.herokuapp.com/img/users/${photo}`}
-                src={`http://localhost:8000/img/users/${photo}`}
+                src={`https://neibchat-api.herokuapp.com/img/users/${photo}`}
+                // src={`http://localhost:8000/img/users/${photo}`}
                 alt="avatar"
                 className="img-fluid rounded"
               />

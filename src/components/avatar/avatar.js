@@ -58,8 +58,8 @@ class Avatar extends React.Component {
     inp.value = null;
     this.setState({
       photo: '',
-      // src: `https://neibchat-api.herokuapp.com/img/users/${this.props.photo}`,
-      src: `http://localhost:8000/img/users/${this.props.photo}`,
+      src: `https://neibchat-api.herokuapp.com/img/users/${this.props.photo}`,
+      // src: `http://localhost:8000/img/users/${this.props.photo}`,
     });
   };
 
@@ -73,8 +73,8 @@ class Avatar extends React.Component {
     if (loading)
       this.setState({
         loading: false,
-        // src: `https://neibchat-api.herokuapp.com/img/users/${this.props.photo}`,
-        src: `http://localhost:8000/img/users/${this.props.photo}`,
+        src: `https://neibchat-api.herokuapp.com/img/users/${this.props.photo}`,
+        // src: `http://localhost:8000/img/users/${this.props.photo}`,
       });
   }
 

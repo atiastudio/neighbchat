@@ -57,8 +57,8 @@ class HeaderIcon extends React.Component {
           <span className="d-none d-sm-inline">{name}</span>
           <img
             className="nav__user-photo"
-            // src={`https://neibchat-api.herokuapp.com/img/users/${photo}`}
-            src={`http://localhost:8000/img/users/${photo}`}
+            src={`https://neibchat-api.herokuapp.com/img/users/${photo}`}
+            // src={`http://localhost:8000/img/users/${photo}`}
             alt="User"
           />
         </a>
