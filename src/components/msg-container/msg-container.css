@@ -1,0 +1,10 @@
+.msg-container {
+  max-height: 77vh;
+}
+
+@media (max-width: 769px) {
+  .msg-container {
+    height: calc(100% - 90px);
+    height: -moz-calc(100% - 90px);
+  }
+}

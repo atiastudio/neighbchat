@@ -1,3 +1,22 @@
-.app-cont {
+/* .app-cont {
   height: 77vh;
+} */
+
+.card {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 4px 0 rgba(0, 0, 0, 0.12),
+    0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+* {
+  transition: 300ms ease all;
+}
+
+.shadow-sm {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12),
+    0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.shadow-sm-primary {
+  box-shadow: 0 0 2px 0 rgba(0, 123, 255, 0.14),
+    0 2px 2px 0 rgba(0, 123, 255, 0.12), 0 1px 3px 0 rgba(0, 123, 255, 0.2);
 }

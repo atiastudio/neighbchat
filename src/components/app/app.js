@@ -1,94 +1,93 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import DummyChapiService from '../../services/dammy-api';
 import Header from '../header';
+import ErrorLine from '../error-line';
 import Footer from '../footer';
-import Menu from '../menu';
-import MsgDisplay from '../msg-display';
-import MsgInput from '../msg-input';
-import Content from '../content';
 import Spinner from '../spinner';
-import ErrorIndicator from '../error-indicator';
-import Login from '../login';
-import Signup from '../signup';
+import {
+  MainPage,
+  FrogetPass,
+  Login,
+  Profile,
+  ResetPass,
+  Signup,
+  UpdatePass,
+} from '../pages';
+
+import { userRequested, listenMsgNew } from '../../actions';
+import {
+  selectUserId,
+  selectUserLoading,
+  selectUserError,
+  selectMsgLoadingInit,
+} from '../../selectors';
 
 import './app.css';
 
 class App extends React.Component {
   state = {
-    chapiService: new DummyChapiService(),
-    messages: [],
     error: false,
-    loading: true
-  };
-
-  updateMsgs = () => {
-    this.state.chapiService
-      .getAllMessages()
-      .then(this.onLoadedMsgs)
-      .catch(this.onError);
-  };
-
-  onLoadedMsgs = messages => {
-    this.setState({
-      messages,
-      error: false,
-      loading: false
-    });
-  };
-
-  onError = err => {
-    this.setState({
-      error: true,
-      loading: false
-    });
-  };
-
-  sendMsg = msg => {
-    const newMessages = this.state.messages;
-    newMessages.push(msg);
-    this.setState({
-      messages: newMessages
-    });
+    loading: true,
   };
 
   // Component cycle
   componentDidMount() {
-    this.updateMsgs();
+    // console.log('App component did MOUNT!');
+    this.props.fetchUser();
+    this.setState({ loading: false });
+    this.props.listenMsgNew();
   }
 
   // Component render
 
   render() {
-    const { messages, loading, error } = this.state;
-    const maxId = messages.length;
-
+    const { loading } = this.state;
     if (loading) return <Spinner />;
-    if (error) return <ErrorIndicator />;
+
+    const { userId } = this.props;
+    const content = !userId ? (
+      <Switch>
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
+        <Route path="/forget-password" component={FrogetPass} />
+        <Route path="/reset-password/:token" component={ResetPass} />
+        <Route path="*" component={() => <Redirect to="/login" />} />
+      </Switch>
+    ) : (
+      <Switch>
+        <Route exact path="/" component={MainPage} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/update-password" component={UpdatePass} />
+        <Route path="*" component={() => <Redirect to="/" />} />
+      </Switch>
+    );
 
     return (
-      <Router>
+      <React.Fragment>
         <Header />
-        <div className="container app-cont">
-          <div className="row">
-            {/* <Menu></Menu>
-            <Content>
-              <MsgDisplay messages={messages}></MsgDisplay>
-              <MsgInput sendMsg={this.sendMsg} maxId={maxId}></MsgInput>
-            </Content> */}
-            <Signup />
-          </div>
-        </div>
+        <ErrorLine />
+        {content}
         <Footer />
-      </Router>
+      </React.Fragment>
     );
   }
 }
 
-export default App;
+const mapStateToProps = createStructuredSelector({
+  userId: selectUserId,
+  loading: selectUserLoading,
+  error: selectUserError,
+  msgLoading: selectMsgLoadingInit,
+});
+
+const reqParams = ['getMe'];
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchUser: () => dispatch(userRequested({ reqParams })),
+  listenMsgNew: () => dispatch(listenMsgNew()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

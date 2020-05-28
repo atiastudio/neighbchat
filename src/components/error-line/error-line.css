@@ -1,0 +1,9 @@
+.error-line {
+  pointer-events: none;
+  position: absolute;
+  z-index: 2000;
+  left: 0;
+  right: 0;
+  top: 90px;
+  background-color: rgba(0, 0, 0, 0.5);
+}

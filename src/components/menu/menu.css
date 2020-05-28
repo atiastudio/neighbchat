@@ -5,15 +5,33 @@
   flex-flow: column nowrap;
 }
 
-.active {
-  z-index: 100;
+.nav-link {
+  position: relative;
+}
 
-  border-bottom-color: #ddd !important;
-  border-right: 0px #fff !important;
-  border-bottom-left-radius: 0.25rem;
-  border-top-right-radius: 0 !important;
-  margin-right: -1px;
+.mob-item {
+  min-width: 80px;
+}
+.slider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 31%;
+  background-color: rgba(0, 0, 0, 0);
+  border-top: 2px solid #007bff;
+  border-bottom: 2px solid #007bff;
+}
+.slider ~ ul {
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
 
-  /* box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 0 0 0,
-    0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12); */
+.mob-menu {
+  border-bottom: 1px solid #343a40;
+  height: 40px;
+  /* position: absolute; */
+  /* top: 50px; */
+  left: 0;
+  right: 0;
+  z-index: 3;
 }

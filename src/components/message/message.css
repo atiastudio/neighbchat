@@ -1,0 +1,25 @@
+.message-unread {
+  background-color: #8fc5fc;
+}
+
+.icon-wrap-r {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #f8f9fa;
+  opacity: 0;
+}
+
+.card-body:hover .icon-wrap-r {
+  opacity: 1;
+}
+
+.icon-delete {
+  /* font-size: x-small; */
+  opacity: 0.5;
+}
+
+.icon-delete:hover {
+  opacity: 1;
+  cursor: pointer;
+}

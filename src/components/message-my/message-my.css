@@ -1,3 +1,68 @@
 .my-message-my {
   background-color: #8fc5fc;
 }
+
+.icon-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #8fc5fc;
+  opacity: 0;
+}
+
+.card-body:hover .icon-wrap {
+  opacity: 1;
+}
+
+.icon-delete {
+  /* font-size: x-small; */
+  opacity: 0.5;
+}
+
+.icon-delete:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.loading {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto 0;
+}
+.loading::after,
+.loading::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.loading,
+.loading::after,
+.loading::before {
+  animation: loader 0.9s ease alternate infinite;
+}
+
+.loading {
+  animation-delay: 0.18s;
+}
+
+.loading::before {
+  left: -10px;
+  animation-delay: 0s;
+}
+.loading::after {
+  right: -10px;
+  animation-delay: 0.36s;
+}
+
+@keyframes loader {
+  0% {
+    box-shadow: 0 10px 0 -10px #0052ec;
+  }
+  100% {
+    box-shadow: 0 10px 0 #0052ec;
+  }
+}

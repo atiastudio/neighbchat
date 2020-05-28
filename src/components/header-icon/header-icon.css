@@ -1,0 +1,47 @@
+.nav__user-photo {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
+.dropdown-menu {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12),
+    0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.show {
+  opacity: 0;
+  animation: dropdown 0.6s ease forwards;
+}
+
+@media (max-width: 576px) {
+  .nav__user-photo {
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+  .dropdown-menu {
+    left: -100px;
+  }
+}
+
+@media only screen and (max-height: 453px) and (min-width: 576px) and (orientation: landscape) {
+  .nav__user-photo {
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+  .dropdown-menu {
+    left: -100px;
+  }
+}
+
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

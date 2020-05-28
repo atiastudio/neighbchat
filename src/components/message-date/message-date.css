@@ -1,0 +1,19 @@
+.message-date__wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 10px;
+  bottom: 450px;
+  /* background-color: aqua; */
+  pointer-events: none;
+}
+
+.message-date {
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 700ms ease;
+}
+
+.message-date.hide {
+  opacity: 0;
+}

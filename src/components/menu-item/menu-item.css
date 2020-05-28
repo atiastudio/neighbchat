@@ -1,0 +1,25 @@
+.active {
+  z-index: 5;
+
+  border-bottom-color: #ddd !important;
+  border-right: 0px #fff !important;
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0 !important;
+  margin-right: -1px;
+
+  /* box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 0 0 0,
+    0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12); */
+}
+
+/* .unreadnum {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+} */
+
+@media only screen and (max-height: 453px) and (min-width: 576px) and (orientation: landscape) {
+  .menu-icon {
+    font-size: 2rem;
+  }
+}

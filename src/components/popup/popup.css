@@ -1,0 +1,22 @@
+.popup-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.popup {
+  /* box-shadow: 0 4px 5px 0 rgba(255, 255, 255, 0.14),
+    0 1px 10px 0 rgba(255, 255, 255, 0.12), 0 2px 4px 0 rgba(255, 255, 255, 0.2); */
+  box-shadow: 0 8px 10px 1px rgba(255, 255, 255, 0.14),
+    0 3px 14px 3px rgba(255, 255, 255, 0.12),
+    0 4px 5px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn {
+  min-width: 100px;
+}

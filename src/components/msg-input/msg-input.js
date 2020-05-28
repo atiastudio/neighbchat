@@ -1,18 +1,50 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { sendMessage } from '../../actions';
+import { selectUserBan } from '../../selectors';
 
 import './msg-input.css';
 
-const MsgInput = ({ maxId, sendMsg }) => {
-  let newMsg = {
-    id: maxId,
-    user: 'Ann',
-    time: Date.now(),
-    text: '',
-    isMy: true
+class MsgInput extends React.Component {
+  refMessageBox = React.createRef();
+  refInput = React.createRef();
+
+  // ----------- STATE -----------
+  state = {
+    show: true,
+    height: 35,
   };
 
-  const handlePressEnter = event => {
+  // ----------- FUNCTIONS -----------
+  handleBlur = (event) => {
     const msgTxt = event.target.innerText;
+    if (!msgTxt) {
+      this.setState({ show: true });
+    }
+  };
+
+  handleClick = (event) => {
+    event.preventDefault();
+    const msgTxt = this.refMessageBox.current.innerText.trim();
+
+    const { isBan } = this.props;
+    if (isBan) return;
+
+    if (msgTxt !== '') {
+      this.props.sendMessage(msgTxt);
+      this.refMessageBox.current.innerText = '';
+    }
+  };
+
+  handlePressEnter = (event) => {
+    const msgTxt = event.target.innerText;
+
+    const { isBan } = this.props;
+    if (isBan) return;
 
     if (
       event.key === 'Enter' &&
@@ -20,30 +52,54 @@ const MsgInput = ({ maxId, sendMsg }) => {
       msgTxt.trim() !== ''
     ) {
       event.preventDefault();
-      newMsg.text = msgTxt;
-      sendMsg(newMsg);
+      this.props.sendMessage(msgTxt.trim());
       event.target.innerText = '';
+      this.setState({ show: true });
+    } else {
+      this.setState({ show: false });
     }
+    const margin = this.refInput.current.clientHeight;
+    this.props.handleMargin(margin);
   };
 
-  return (
-    <form className="p-2 msg-form bg-light">
-      <div className="form-group d-flex align-items-center">
-        <div
-          className="form-control msg-input"
-          id="message"
-          aria-placeholder="Напишите сообщение..."
-          role="textbox"
-          contentEditable="true"
-          aria-multiline="true"
-          onKeyPress={handlePressEnter}
-        ></div>
-        <div className="text-primary msg-send">
-          <i className="fa fa-paper-plane p-2" aria-hidden="true"></i>
-        </div>
-      </div>
-    </form>
-  );
-};
+  componentDidMount() {
+    const margin = this.refInput.current.clientHeight;
+    this.props.handleMargin(margin);
+  }
 
-export default MsgInput;
+  render() {
+    const { show } = this.state;
+    const plClass = show ? '' : 'd-none';
+    return (
+      <form className="p-2 msg-form bg-light" ref={this.refInput}>
+        <div className="form-group d-flex align-items-center m-0">
+          <div
+            className="form-control msg-input"
+            id="message"
+            ref={this.refMessageBox}
+            tabIndex="0"
+            role="textbox"
+            contentEditable="true"
+            aria-multiline="true"
+            onKeyPress={this.handlePressEnter}
+            onBlur={this.handleBlur}
+          ></div>
+          <div className={`placeholder ${plClass}`}>Type a message...</div>
+          <div className="text-primary msg-send p-2" onClick={this.handleClick}>
+            <FontAwesomeIcon icon={faPaperPlane} />
+          </div>
+        </div>
+      </form>
+    );
+  }
+}
+
+const mapStateToProps = createStructuredSelector({
+  isBan: selectUserBan,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  sendMessage: (text) => dispatch(sendMessage(text)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MsgInput);

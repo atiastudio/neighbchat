@@ -4,15 +4,19 @@
 }
 
 .msg-input {
-  outline-style: initial;
+  /* outline-style: initial;
   outline-color: initial;
-  outline-width: 0px;
+  outline-width: 0px; */
+  outline: 0;
   resize: none;
 
+  min-height: 30px;
   max-height: 20vh;
   /* width: 70%; */
   overflow-y: auto;
   overflow-x: hidden;
+
+  word-wrap: break-word;
 }
 
 .msg-input:focus {
@@ -22,4 +26,22 @@
 .msg-send:hover {
   color: #3a99fc !important;
   cursor: pointer;
+}
+
+.placeholder {
+  position: absolute;
+  left: 35px;
+}
+
+@media (max-width: 576px) {
+  .msg-form {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+  }
+  .placeholder {
+    left: 20px;
+  }
 }

@@ -1,0 +1,16 @@
+.serv-item {
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+}
+
+.serv-item:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.serv-item-title {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  width: 100%;
+}

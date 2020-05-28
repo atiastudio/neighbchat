@@ -1,9 +1,9 @@
 .msg-display {
-  /* border-right: 3px solid #000; */
-  /* border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem; */
-  /* position: relative; */
+  max-height: 68vh;
+  min-height: 450px;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0);
 }
 
 .msg-display::-webkit-scrollbar {
@@ -14,4 +14,21 @@
 .msg-display::-webkit-scrollbar-thumb {
   border-radius: 2px;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 576px) {
+  .msg-display {
+    max-height: 80vh;
+    min-height: 50px;
+    position: fixed;
+    left: 5px;
+    right: 5px;
+  }
+}
+
+@media only screen and (max-height: 453px) and (min-width: 576px) and (orientation: landscape) {
+  .msg-display {
+    max-height: 80vh;
+    min-height: 50px;
+  }
 }
